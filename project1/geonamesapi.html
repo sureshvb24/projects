@@ -1,0 +1,111 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8">
+		<title>GeoNames API</title>
+		<meta name="description" content="AJAX/PHP/CURL/JSON example">
+		<meta name="author" content="Venkata Suresh B">
+		<link rel="stylesheet" type="text/css" href="./libs/css/style.css" />
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	</head>
+  
+  <div class="main-nav">
+    <ul class="nav">
+      <li class="name">GeoNames API</li>
+      <li><a href="./../index.html">Home</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="./geonamesapi.html">GeoNamesAPI</a></li>
+      <li><a href="./../index.html">Profile</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="header"><h1>Geo Names Rest Web Services</h1></div>
+  <div class="left"></div>
+  <div class="center">
+    <table>
+      <thead>
+        <tr>
+          <th class="tbl-hdr"><h3>API Name</h3></th>
+          <th class="tbl-hdr"><h3>API Description</h3></th>
+          <th>Parameters</th>
+		  <th></th>
+        </tr>  
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tbl-col1"><h3>Aster Global Digital Elevation Model</h3></td>
+          <td class="tbl-col2">a single number giving the elevation in meters according to aster gdem, ocean areas have been masked as "no data" and have been assigned a value of -32768 </td>
+		  <td class="tbl-col3">
+        <label for="latitude"> Latitude:  </label>
+        <input type="text" id="latitude" name="latitude"><br>
+        <label for="longitude">Longitude: </label>
+        <input type="text" id="longitude" name="longitude"><br><br>
+        <button id="agdebtnRun">Submit</button>
+      </td>
+        </tr>
+        <tr>
+          <td class="tbl-col1"><h3>Children</h3></td>
+          <td class="tbl-col2">Returns the children (admin divisions and populated places) for a given geonameId. The children are the administrative divisions within an other administrative division, like the counties (ADM2) in a state (ADM1) or also the countries in a continent.</td>
+		  <td class="tbl-col3">
+        <label for="geonameId"> geoNameId:  </label>
+        <input type="text" id="geonameId" name="geonameId"><br>
+        <label for="selHierarchy"> Hierarchy: </label>
+        <select id="selHierarchy">
+          <option value="tourism">Tourism</option>
+          <option value="geography">Geography</option>
+          <option value="dependency">Dependency</option>
+        </select><br>
+        <label for="selMaxrows"> MaxRows: </label>
+        <select id="selMaxrows"> 
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select><br><br>
+        <button id="childrenbtnRun">Submit</button></td>
+          </tr>
+        <tr>
+          <td class="tbl-col1"><h3>Contains</h3></td>
+          <td class="tbl-col2">returns all features within the GeoName feature for the given geoNameId. It only returns contained features when a polygon boundary for the input feature is defined. </td>
+		  <td class="tbl-col3">
+        <label for="congeonameId"> geoNameId:  </label>
+        <input type="text" id="congeonameId" name="congeonameId"><br><br>
+        <button id="containsbtnRun">Submit</button></td>
+        </tr>
+        <tr>
+          <td class="tbl-col1"><h3>ContryCode</h3></td>
+          <td class="tbl-col2">The iso country code of any given point. </td>
+		  <td class="tbl-col3">
+        <label for="cclatitude"> Latitude:  </label>
+        <input type="text" id="cclatitude" name="cclatitude"><br>
+        <label for="cclongitude">Longitude: </label>
+        <input type="text" id="cclongitude" name="cclongitude"><br><br>
+        <button id="countryCodebtnRun">Submit</button></td>
+        </tr>
+        <tr>
+          <td class="tbl-col1"><h3>Ocean </h3></td>
+          <td class="tbl-col2">The ocean or sea for the given latitude/longitude</td>
+		  <td  class="tbl-col3">
+        <label for="oclatitude"> Latitude:  </label>
+        <input type="text" id="oclatitude" name="oclatitude"><br>
+        <label for="oclongitude">Longitude: </label>
+        <input type="text" id="oclongitude" name="oclongitude"><br><br>
+        <button id="oceanbtnRun">Submit</button></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  <div class="right"></div>
+  <div id="result"><p>Result: </p></div>
+  </div>
+  <footer>
+    <h3>Contact</h3>
+    <h3>Location</h3>
+    <h3>Privacy Policy</h3>
+    <a href="https://github.com/sureshvb24/projects" class="social github"><img src="./../images/github.svg" alt="github"/></a>
+  </footer>
+		<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+		<script type="application/javascript" src="libs/js/script.js"></script>
+	</body>
+
+</html>

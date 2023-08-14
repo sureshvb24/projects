@@ -1,0 +1,158 @@
+/* Global Layout Set-up */
+* { 
+  box-sizing: border-box;
+}
+  
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #222;
+  background: #f7f5f0;
+}
+/* Link Styles */
+
+a {
+  text-decoration: none;
+  color: #999;
+}
+a:hover {
+  color: #6633ff;
+}
+
+/* Section Styles */
+
+.main-nav {
+  width: 100%;
+  background: black;
+  min-height: 30px;
+  padding: 10px;
+  position: fixed;
+  text-align: center;
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 700;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.nav .name {
+    display: block;
+    margin-right: auto;
+    color: white;
+}
+.nav li {
+  padding: 5px 10px 10px 10px;
+}
+.nav a {
+  transition: all .5s;
+}
+.nav a:hover {
+  color: white
+}
+.container {
+  margin: 0;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows   : auto 1fr auto;
+  grid-template-areas: "hd hd hd" "lt cn rt" "ft ft ft";
+  gap: 0px;
+  position: fixed;
+  top:50px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.container .header {
+  padding-top: 10px;
+  grid-area: hd;
+  width: 100%;
+}
+
+.container .left {
+  grid-area: lt;
+  min-width: 10vh;  
+}
+
+.container .center {
+  grid-area: cn;
+  max-height: 80vh;
+  overflow: scroll;
+}
+.container .center table {
+  text-align: center;
+  margin: auto;
+}
+.container .center table td {
+    border: 2px solid #8c6b48;
+    padding: 10px 10px 10px 10px;
+}
+.container .center table thead th {
+  position: sticky;
+  top: 0px;
+  border-color: #8c6b48;
+  background-color: #8c6b48;
+}
+
+.tbl-col3 {
+  min-width: 30%;
+  text-align: right;
+}
+
+.tbl-col2 {
+  min-width: 40%;
+}
+.tbl-col1 {
+  min-width: 30%;
+}
+
+/* #agdebtnRun, #childrenbtnRun, #containsbtnRun, #countryCodebtnRun, #oceanbtnRun {
+  
+} */
+.container .right {
+  grid-area: rt;
+  min-width: 10vh;
+}
+
+.container #result {
+  overflow: scroll;
+  border: solid 2px;
+  list-style: none;
+  width: 100%;
+  font-size: small bold;
+  grid-area: ft;
+  min-width: 80vh;
+  min-height: 15vh;
+  text-transform: uppercase;
+  text-align: center;
+  border-color: #8c6b48;
+  }
+
+footer {
+  width: 100%;
+  padding: 5px;
+  position: fixed;
+  text-align: center;
+  top:auto;
+  bottom: 0px;
+  background-color: white;
+  max-height: 5%;
+}
+
+footer h3 {
+  display: inline-block;
+  font-size: 12px;
+  color: cornflowerblue;
+  padding : 0px;
+  margin: 0 20px;
+  text-align: center;
+} 
+
+footer a {
+  background-image: url(/images/github.svg);
+}
