@@ -46,9 +46,7 @@
 				console.log(JSON.stringify(result));
 				var res = 'No Data';
 				if (result.status.name == "ok") {
-					if (result['data']['astergdem']) {
-						res = result
-					}
+					res = result['data']['astergdem'];
 					console.log(result);
 					$('#result').html(res);
 					$('#latitude').val('');
