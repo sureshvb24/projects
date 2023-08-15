@@ -58,8 +58,8 @@ a:hover {
   margin: 0;
   height: 90vh;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows   : auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows   : auto minmax(0, 1fr) auto;
   grid-template-areas: "hd hd hd" "lt cn rt" "ft ft ft";
   gap: 0px;
   position: fixed;
@@ -76,13 +76,14 @@ a:hover {
 
 .container .left {
   grid-area: lt;
-  min-width: 10vh;  
+  /* min-width: 10vh;   */
 }
 
 .container .center {
   grid-area: cn;
   max-height: 80vh;
   overflow: scroll;
+  justify-items: center;
 }
 .container .center table {
   text-align: center;
@@ -100,23 +101,37 @@ a:hover {
 }
 
 .tbl-col3 {
-  min-width: 30%;
+  min-width: 50%;
   text-align: right;
 }
 
 .tbl-col2 {
-  min-width: 40%;
+  min-width: 30%;
 }
 .tbl-col1 {
   min-width: 30%;
 }
 
-/* #agdebtnRun, #childrenbtnRun, #containsbtnRun, #countryCodebtnRun, #oceanbtnRun {
-  
-} */
+input[type=text] {
+  width: 50%;
+  padding: 2px 5px;
+  margin: 2% 0;
+  box-sizing: border-box;
+  align-items: right;
+}
+
+select {
+  width: 50%;
+  padding: 8px 10px;
+  border: burlywood;
+  border-radius: 2px;
+}
+ #agdebtnRun, #childrenbtnRun, #containsbtnRun, #countryCodebtnRun, #oceanbtnRun {
+    text-align: right;
+} 
 .container .right {
   grid-area: rt;
-  min-width: 10vh;
+  /* min-width: 10vh; */
 }
 
 .container #result {
@@ -131,6 +146,13 @@ a:hover {
   text-transform: uppercase;
   text-align: center;
   border-color: #8c6b48;
+  align-items: center;
+  }
+
+  #result p {
+      padding: 2px 5px;
+      margin: 2% 0;
+      align-items: center;
   }
 
 footer {

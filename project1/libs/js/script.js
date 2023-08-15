@@ -31,7 +31,6 @@
 	});
 
 	$('#agdebtnRun').click(function() {
-		console.log('Im running here');
 		console.log($('input[name="latitude"]').val());
 		console.log($('input[name="longitude"]').val());
 		$.ajax({
@@ -45,10 +44,18 @@
 			success: function(result) {
 
 				console.log(JSON.stringify(result));
-
+				var res = 'No Data';
 				if (result.status.name == "ok") {
+					if (result['data']['astergdem']) {
+						res = result
+					}
 					console.log(result);
-					$('#result').html(result['data']['astergdem']);
+					$('#result').html(res);
+					$('#latitude').val('');
+					$('#longitude').val('');
+				}
+				else {
+					$('#result').html(res);
 					$('#latitude').val('');
 					$('#longitude').val('');
 				}
@@ -74,14 +81,25 @@
 				hierarchy: $('#selHierarchy').val(),
 				maxRows: $('#selMaxrows').val()
 			},
-			success: function(result) {
+			success: function (result) {
 				console.log(JSON.stringify(result));
+				var res = 'No Data';
 				if (result.status.name == "ok") {
 					var list = "";
-					result['data']['geonames'].forEach(geoname => {
-						list +="<li>"+geoname['toponymName']+"</li>";
+					result['data']['geonames'].forEach((geoname, i) => {
+						if (i === 0 || i === result['data']['geonames'].length - 1) {
+							console.log(i);
+							list += geoname['toponymName'];
+						} else {
+							list += geoname['toponymName'] + ', ';
+						}
 					});
-					$('#result').html('<div><ul>'+ list + '</ul></div>');
+					if (list) {
+						res = list;
+					}
+					$('#result').html('<div><p>' + res + '<p></div>');
+				} else {
+					$('#result').html('<div><p>' + res + '<p></div>');
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -104,14 +122,24 @@
 			},
 			success: function(result) {
 				console.log(JSON.stringify(result));
+				var res = 'No Data';
 				if (result.status.name == "ok") {
 					console.log(result);
 					var list = "";
-					result['data']['geonames'].forEach(geoname => {
-						list +="<li>"+geoname['toponymName']+"</li>";
+					result['data']['geonames'].forEach((geoname, i) => {
+						if (i === 0 || i === result['data']['geonames'].length - 1) {
+							console.log(i);
+							list += geoname['toponymName'];
+						} else {
+							list += geoname['toponymName'] + ', ';
+						}
 					});
-					$('#result').html('<div><ul>'+ list + '</ul></div>');
-					
+					if (list) {
+						res = list;
+					}
+					$('#result').html('<div><p>'+ res + '</p></div>');
+				} else {
+					$('#result').html('<div><p>' + res + '</p></div>');
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -124,7 +152,6 @@
 	
 	});
 	$('#countryCodebtnRun').click(function() {
-		console.log('Im running here');
 		console.log($('input[name="cclatitude"]').val());
 		console.log($('input[name="cclongitude"]').val());
 		$.ajax({
@@ -135,11 +162,20 @@
 				latitude: $('#cclatitude').val(),
 				longitude: $('#cclongitude').val()
 			},
-			success: function(result) {
+			success: function (result) {
+				var res = 'No Data';
 				console.log(JSON.stringify(result));
 				if (result.status.name == "ok") {
 					console.log(result);
-					$('#result').html(result['data']['countryCode'] + ', ' + result['data']['countryName']);
+					if (result['data']['countryCode'] || result['data']['countryName']) {
+						res = result['data']['countryCode'] + ', ' + result['data']['countryName'];
+					}
+					$('#result').html(res);
+					$('#cclatitude').val('');
+					$('#cclongitude').val('');
+				}
+				else {
+					$('#result').html(res);
 					$('#cclatitude').val('');
 					$('#cclongitude').val('');
 				}
@@ -154,7 +190,6 @@
 	
 	});
 	$('#oceanbtnRun').click(function() {
-		console.log('Im running here');
 		console.log($('input[name="oclatitude"]').val());
 		console.log($('input[name="oclongitude"]').val());
 		$.ajax({
@@ -167,11 +202,20 @@
 			},
 			success: function(result) {
 				console.log(JSON.stringify(result));
+				var res = 'No Data';
 				if (result.status.name == "ok") {
 					console.log(result);
-					$('#result').html('Ocean : ' + result['data']['ocean']['name'] + ' ,GeoNameId : ' + result['data']['ocean']['geonameId']);
+					if (result['data']['ocean']['name']) {
+						res = 'Ocean : ' + result['data']['ocean']['name'] + ' ,GeoNameId : ' + result['data']['ocean']['geonameId'];
+					}
+					$('#result').html(res);
 					$('#oclatitude').val('');
 					$('#oclongitude').val('');
+				}
+				else {
+					$('#result').html(res);
+					$('#oclatitude').val('');
+					$('#oclongitude').val('');					
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
